@@ -15,9 +15,9 @@ namespace CubeConundrumKata;
 public class Tests
 {
     [Test]
-    public void gagsd()
+    public void Is_Game_Possible()
     {
-        var sut = new Game();
+        var sut = new Game(3,4,5);
 
         var result = sut.IsGamePossible(12,13,14);
         
@@ -28,9 +28,17 @@ public class Tests
 
 public class Game
 {
-    private int red_cubes = 0;
-    private int green_cubes = 0;
-    private int blue_cubes = 0;
+    private int red_cubes;
+    private int green_cubes;
+    private int blue_cubes;
+
+    public Game(int redCubes, int greenCubes, int blueCubes)
+    {
+        red_cubes = redCubes;
+        green_cubes = greenCubes;
+        blue_cubes = blueCubes;
+    }
+
     public bool? IsGamePossible(int redCubesInBag, int greenCubesInBag, int blueCubesInBag)
     {
         return redCubesInBag >= red_cubes && greenCubesInBag >= green_cubes && blueCubesInBag >= blue_cubes;
