@@ -19,17 +19,20 @@ public class Tests
     {
         var sut = new Game();
 
-        var isGamePossible = sut.IsGamePossible(12,13,14);
+        var result = sut.IsGamePossible(12,13,14);
         
-        Assert.IsTrue(isGamePossible);
+        Assert.IsTrue(result);
     }
 
 }
 
 public class Game
 {
-    public bool? IsGamePossible(int i, int i1, int i2)
+    private int red_cubes = 0;
+    private int green_cubes = 0;
+    private int blue_cubes = 0;
+    public bool? IsGamePossible(int redCubesInBag, int greenCubesInBag, int blueCubesInBag)
     {
-        return true;
+        return redCubesInBag >= red_cubes && greenCubesInBag >= green_cubes && blueCubesInBag >= blue_cubes;
     }
 }
