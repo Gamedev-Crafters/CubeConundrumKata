@@ -19,7 +19,7 @@ public class Tests
     {
         var sut = new Handful(3,4,5);
 
-        var result = sut.IsGamePossible(12,13,14);
+        var result = sut.IsPossible(12,13,14);
         
         Assert.IsTrue(result);
     }
@@ -29,7 +29,7 @@ public class Tests
     {
         var sut = new Handful(43,4,5);
 
-        var result = sut.IsGamePossible(12,13,14);
+        var result = sut.IsPossible(12,13,14);
         
         Assert.IsFalse(result);
     }
@@ -39,7 +39,7 @@ public class Tests
     {
         var sut = new Game();
 
-        var result = sut.IsGamePossible(12,13,14);
+        var result = sut.IsPossible(12,13,14);
         
         Assert.IsTrue(result);
     }
@@ -48,8 +48,9 @@ public class Tests
 
 public class Game
 {
+    private readonly List<Handful> _handfuls;
     
-    public bool? IsGamePossible(int redCubesInBag, int greenCubesInBag, int blueCubesInBag)
+    public bool IsPossible(int redCubesInBag, int greenCubesInBag, int blueCubesInBag)
     {
         return true;
     }
@@ -68,7 +69,7 @@ public class Handful
         blue_cubes = blueCubes;
     }
 
-    public bool? IsGamePossible(int redCubesInBag, int greenCubesInBag, int blueCubesInBag)
+    public bool IsPossible(int redCubesInBag, int greenCubesInBag, int blueCubesInBag)
     {
         return redCubesInBag >= red_cubes && greenCubesInBag >= green_cubes && blueCubesInBag >= blue_cubes;
     }
