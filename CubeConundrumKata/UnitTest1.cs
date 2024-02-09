@@ -24,6 +24,16 @@ public class Tests
         Assert.IsTrue(result);
     }
 
+    [Test]
+    public void Game_Is_Not_Possible()
+    {
+        var sut = new Game(43,4,5);
+
+        var result = sut.IsGamePossible(12,13,14);
+        
+        Assert.IsFalse(result);
+    }
+
 }
 
 public class Game
