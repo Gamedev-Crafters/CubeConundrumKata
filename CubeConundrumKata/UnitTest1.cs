@@ -37,11 +37,20 @@ public class Tests
     [Test]
     public void Is_Game_Possible()
     {
-        var sut = new Game();
+        var sut = new Game(new List<Handful>());
 
         var result = sut.IsPossible(12,13,14);
         
         Assert.IsTrue(result);
+    }
+    [Test]
+    public void Game_Is_Not_Possible()
+    {
+        var sut = new Game(new List<Handful>());
+
+        var result = sut.IsPossible(12,13,14);
+        
+        Assert.IsFalse(result);
     }
 
 }
@@ -49,9 +58,21 @@ public class Tests
 public class Game
 {
     private readonly List<Handful> _handfuls;
-    
+
+    public Game(List<Handful> handfuls)
+    {
+        _handfuls = handfuls;
+    }
+
     public bool IsPossible(int redCubesInBag, int greenCubesInBag, int blueCubesInBag)
     {
+        foreach (var handful in _handfuls)
+        {
+            if (handful.IsPossible(redCubesInBag,greenCubesInBag,blueCubesInBag))
+                continue;
+            return false;
+        }
+
         return true;
     }
 }
