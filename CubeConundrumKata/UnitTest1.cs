@@ -15,9 +15,9 @@ namespace CubeConundrumKata;
 public class Tests
 {
     [Test]
-    public void Is_Game_Possible()
+    public void Is_Handful_Possible()
     {
-        var sut = new Game(3,4,5);
+        var sut = new Handful(3,4,5);
 
         var result = sut.IsGamePossible(12,13,14);
         
@@ -25,24 +25,43 @@ public class Tests
     }
 
     [Test]
-    public void Game_Is_Not_Possible()
+    public void Handful_Is_Not_Possible()
     {
-        var sut = new Game(43,4,5);
+        var sut = new Handful(43,4,5);
 
         var result = sut.IsGamePossible(12,13,14);
         
         Assert.IsFalse(result);
+    }
+    
+    [Test]
+    public void Is_Game_Possible()
+    {
+        var sut = new Game();
+
+        var result = sut.IsGamePossible(12,13,14);
+        
+        Assert.IsTrue(result);
     }
 
 }
 
 public class Game
 {
+    
+    public bool? IsGamePossible(int redCubesInBag, int greenCubesInBag, int blueCubesInBag)
+    {
+        return true;
+    }
+}
+
+public class Handful
+{
     private int red_cubes;
     private int green_cubes;
     private int blue_cubes;
 
-    public Game(int redCubes, int greenCubes, int blueCubes)
+    public Handful(int redCubes, int greenCubes, int blueCubes)
     {
         red_cubes = redCubes;
         green_cubes = greenCubes;
