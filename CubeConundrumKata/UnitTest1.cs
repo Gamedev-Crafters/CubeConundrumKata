@@ -22,33 +22,13 @@ public class Tests
         Assert.IsNotEmpty(hand);
     }
 
-    [Test]
-    public void Add_Cubes()
-    {
-        var sut = new Bag();
-
-        sut.AddCube("");
-        
-    }
 }
 
 public class Bag
 {
-    private List<string> _cubes;
-
-    public Bag()
-    {
-        _cubes = new List<string>();
-        _cubes.Add("");
-    }
     
-    public List<string> GrabCubes()
+    public int[] GrabCubes()
     {
-        return _cubes;
-    }
-
-    public void AddCube(string cube)
-    {
-        _cubes.Add(cube);
+        return new int[3];
     }
 }
