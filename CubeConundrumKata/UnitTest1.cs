@@ -37,7 +37,7 @@ public class Tests
     [Test]
     public void Is_Game_Possible()
     {
-        var sut = new Game(new List<Handful>());
+        var sut = new Game(2, new List<Handful>());
 
         var result = sut.IsPossible(12,13,14);
         
@@ -48,21 +48,55 @@ public class Tests
     {
         var handfuls = new List<Handful>();
         handfuls.Add(new Handful(40,30,100));
-        var sut = new Game(handfuls);
+        var sut = new Game(2, handfuls);
 
         var result = sut.IsPossible(12,13,14);
         
         Assert.IsFalse(result);
     }
 
+    [Test]
+    public void Sum_Id_Of_Possible_Games()
+    {
+        var games = new List<Game>();
+        var game1 = new Game(2, new List<Handful>());
+        var game2 = new Game(2, new List<Handful>());
+        games.Add(game1);
+        games.Add(game2);
+        var sut = new Player();
+
+        var result = sut.SumIdOfPossibleGames(games);
+        
+        Assert.AreEqual(4, result);
+    }
+    
+}
+
+public class Player
+{
+    public int SumIdOfPossibleGames(List<Game> gamesToCheck)
+    {
+        var finalResult = 0;
+        foreach (var game in gamesToCheck)
+        {
+            if (game.IsPossible(12, 13, 14))
+            {
+                finalResult += game.GetId();
+            }
+        }
+
+        return finalResult;
+    }
 }
 
 public class Game
 {
     private readonly List<Handful> _handfuls;
+    private readonly int _id;
 
-    public Game(List<Handful> handfuls)
+    public Game(int id, List<Handful> handfuls)
     {
+        _id = id;
         _handfuls = handfuls;
     }
 
@@ -76,6 +110,11 @@ public class Game
         }
 
         return true;
+    }
+
+    public int GetId()
+    {
+        return _id;
     }
 }
 
