@@ -46,7 +46,9 @@ public class Tests
     [Test]
     public void Game_Is_Not_Possible()
     {
-        var sut = new Game(new List<Handful>());
+        var handfuls = new List<Handful>();
+        handfuls.Add(new Handful(40,30,100));
+        var sut = new Game(handfuls);
 
         var result = sut.IsPossible(12,13,14);
         
