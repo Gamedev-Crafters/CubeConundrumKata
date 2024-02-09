@@ -13,13 +13,22 @@ namespace CubeConundrumKata;
 public class Tests
 {
     [Test]
-    public void Asadhnasd()
+    public void Grab_Cubes()
     {
         var sut = new Bag();
 
         var hand = sut.GrabCubes();
         
         Assert.IsNotEmpty(hand);
+    }
+
+    [Test]
+    public void Add_Cubes()
+    {
+        var sut = new Bag();
+
+        sut.AddCube("");
+        
     }
 }
 
@@ -36,5 +45,10 @@ public class Bag
     public List<string> GrabCubes()
     {
         return _cubes;
+    }
+
+    public void AddCube(string cube)
+    {
+        _cubes.Add(cube);
     }
 }
